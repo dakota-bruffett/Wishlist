@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),onListItemClickedListener {
     private lateinit var addPlaceEditText:EditText
     private lateinit var addnewPlaceButton: Button
     private lateinit var PlacelistRecylerView:RecyclerView
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         PlacelistRecylerView = findViewById(R.id.Recyler_list)
 
         val  places = placesViewModel.getPlaces()
-        placeRescylerAdapoter = PlaceRescylerAdapoter(places)
+        placeRescylerAdapoter = PlaceRescylerAdapoter(places, this)
         PlacelistRecylerView.layoutManager = LinearLayoutManager(this)
         PlacelistRecylerView.adapter = placeRescylerAdapoter
         addnewPlaceButton.setOnClickListener {
@@ -42,7 +42,8 @@ class MainActivity : AppCompatActivity() {
         if (name.isEmpty()){
             Toast.makeText(this, "Please enter a place here", Toast.LENGTH_SHORT).show()
         } else {
-            val postionAdded = placesViewModel.addNewPlaces(name)
+            val newPlace = Place(name)
+            val postionAdded = placesViewModel.addNewPlaces(newPlace)
             if (postionAdded == -1) {
                 Toast.makeText(this, "you already put this here try again", Toast.LENGTH_SHORT)
                     .show()
@@ -63,5 +64,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun clearForm() {
         addPlaceEditText.text.clear()
+    }
+
+    override fun onListItemClicked(place: Place) {
+        Toast.makeText(this, "$place globe icon is picked", Toast.LENGTH_SHORT).show()
     }
 }

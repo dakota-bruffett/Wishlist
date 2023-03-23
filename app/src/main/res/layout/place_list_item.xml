@@ -10,9 +10,9 @@
         android:id="@+id/place_name"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginEnd="116dp"
-        android:layout_marginBottom="36dp"
-        android:text="TextView"
+        android:layout_marginEnd="124dp"
+        android:layout_marginBottom="60dp"
+        android:text="@string/place_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -24,4 +24,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_dialog_map" />
+
+    <TextView
+        android:id="@+id/Date_added_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="124dp"
+        android:layout_marginBottom="16dp"
+        tools:text="3/22/22"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
