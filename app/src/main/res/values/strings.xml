@@ -3,5 +3,7 @@
     <string name="whereisyournextlocation">WhereIsYourNextLocation?</string>
     <string name="add">Add</string>
     <string name="place_name">Place_name</string>
-    <string name="Createdon">Created on xml</string>
+    <string name="Createdon">Created on %1$s</string>
+    <string name="Deleted">%1$s Deleted</string>
+    <string name="undo">UNDO</string>
 </resources>

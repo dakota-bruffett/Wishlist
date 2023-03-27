@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="124dp"
         android:layout_marginBottom="16dp"
-        tools:text="3/22/22"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="3/22/22" />
 </androidx.constraintlayout.widget.ConstraintLayout>

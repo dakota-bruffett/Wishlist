@@ -1,6 +1,9 @@
 package com.example.wishlist
 
+
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
@@ -8,10 +11,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 
-class MainActivity : AppCompatActivity(),onListItemClickedListener {
+class MainActivity : AppCompatActivity(),onListItemClickedListener,OnDateChagedListener {
     private lateinit var addPlaceEditText:EditText
     private lateinit var addnewPlaceButton: Button
     private lateinit var PlacelistRecylerView:RecyclerView
@@ -32,6 +37,10 @@ class MainActivity : AppCompatActivity(),onListItemClickedListener {
         placeRescylerAdapoter = PlaceRescylerAdapoter(places, this)
         PlacelistRecylerView.layoutManager = LinearLayoutManager(this)
         PlacelistRecylerView.adapter = placeRescylerAdapoter
+        val Swipelistener = OnSwipeListItem(this)
+        val TouchHelper = ItemTouchHelper(Swipelistener)
+        TouchHelper.attachToRecyclerView(PlacelistRecylerView)
+
         addnewPlaceButton.setOnClickListener {
             addnewPlace()
         }
@@ -68,5 +77,30 @@ class MainActivity : AppCompatActivity(),onListItemClickedListener {
 
     override fun onListItemClicked(place: Place) {
         Toast.makeText(this, "$place globe icon is picked", Toast.LENGTH_SHORT).show()
+        val placeLocationUri= Uri.parse("geo:0,07q=${place.name}")
+        val mapIntent= Intent(Intent(intent.action, placeLocationUri))
+        startActivity(mapIntent)
+    }
+
+    override fun onListItemMoved(from: Int, to: Int) {
+        placesViewModel.MovePlace(from, to)
+        placeRescylerAdapoter.notifyItemMoved(from, to)
+
+    }
+
+    override fun onListItemDeleted(position: Int) {
+       val deletedPlace = placesViewModel.DeletePlace(position)
+        placeRescylerAdapoter.notifyItemRemoved(position)
+
+        Snackbar.make(findViewById(R.id.Wishlist),"${deletedPlace.name} Deleted", Snackbar.LENGTH_SHORT)
+            .setActionTextColor(resources.getColor(R.color.Red))
+            .setBackgroundTint(resources.getColor(R.color.black))
+            .setAction(getString(R.string.undo)){
+                placesViewModel.addNewPlaces(deletedPlace,position)
+                placeRescylerAdapoter.notifyItemInserted(position)
+
+            }
+            .show()
+
     }
 }
