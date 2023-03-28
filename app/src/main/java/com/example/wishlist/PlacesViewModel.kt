@@ -11,8 +11,15 @@ class PlacesViewModel:ViewModel() {
     }
 
     fun addNewPlaces(place: Place, position: Int? = null): Int {
-        for (placeName in places){ if (placeName.name.uppercase() == place.name.uppercase()){ return -1
+        for (placeName in places){
+
+
+            if (placeName.name.uppercase() == place.name.uppercase()){
+                return -1
             }
+        }
+
+
         return if (position== null){
             places.add(place)
             places.lastIndex
@@ -22,10 +29,10 @@ class PlacesViewModel:ViewModel() {
         }
 
 
-        }
-        places.add(place) // add a name any name
 
-        return places.lastIndex
+        //places.add(place) // add a name any name
+
+        //return places.lastIndex
     }
     fun MovePlace(From:Int, to:Int){
         val place = places.removeAt(From)

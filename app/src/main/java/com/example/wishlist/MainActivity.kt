@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity(),onListItemClickedListener,OnDateChagedL
     override fun onListItemClicked(place: Place) {
         Toast.makeText(this, "$place globe icon is picked", Toast.LENGTH_SHORT).show()
         val placeLocationUri= Uri.parse("geo:0,07q=${place.name}")
-        val mapIntent = Intent(intent.ACTION_VIEW, placeLocationUri)
+        val mapIntent = Intent(Intent.ACTION_VIEW, placeLocationUri)
         startActivity(mapIntent)
     }
 

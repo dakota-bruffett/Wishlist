@@ -26,7 +26,7 @@ class PlaceRescylerAdapoter(private val places: List<Place>,
             val createdOnTextView = view.context.getString(R.string.Createdon, place.formattedDate())
             dateCreatedOnTextView.text = createdOnTextView
 
-            val mapIcon: ImageView = view.findViewById(R.id.imageView)
+            val mapIcon: ImageView = view.findViewById(R.id.map_icon)
             mapIcon.setOnClickListener {
 
             }
