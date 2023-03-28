@@ -7,4 +7,5 @@
     <string name="Deleted">%1$s Deleted</string>
     <string name="undo">UNDO</string>
     <string name="type_one_reason">Type_one_reason</string>
+    <string name="reason">Reason</string>
 </resources>

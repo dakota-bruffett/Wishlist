@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity(),onListItemClickedListener,OnDateChagedL
     private lateinit var addPlaceEditText:EditText
     private lateinit var addnewPlaceButton: Button
     private lateinit var PlacelistRecylerView:RecyclerView
+    private lateinit var Reason :EditText
 
     private lateinit var placeRescylerAdapoter: PlaceRescylerAdapoter
     private val placesViewModel: PlacesViewModel by lazy {
@@ -32,11 +33,13 @@ class MainActivity : AppCompatActivity(),onListItemClickedListener,OnDateChagedL
         addPlaceEditText = findViewById(R.id.new_place_text)
         addnewPlaceButton = findViewById(R.id.Add_button)
         PlacelistRecylerView = findViewById(R.id.Recyler_list)
+        Reason = findViewById(R.id.Type_a_reason)
 
         val  places = placesViewModel.getPlaces()
         placeRescylerAdapoter = PlaceRescylerAdapoter(places, this)
         PlacelistRecylerView.layoutManager = LinearLayoutManager(this)
         PlacelistRecylerView.adapter = placeRescylerAdapoter
+
         val Swipelistener = OnSwipeListItem(this)
         val TouchHelper = ItemTouchHelper(Swipelistener)
         TouchHelper.attachToRecyclerView(PlacelistRecylerView)

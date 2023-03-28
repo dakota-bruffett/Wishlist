@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginEnd="124dp"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="80dp"
             android:text="@string/place_name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -36,7 +36,7 @@
             android:id="@+id/Date_added_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="124dp"
+            android:layout_marginEnd="136dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +46,8 @@
             android:id="@+id/Reason"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
+            android:layout_marginEnd="88dp"
+            android:layout_marginBottom="48dp"
             android:text="@string/type_one_reason"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
