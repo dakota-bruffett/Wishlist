@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import java.security.cert.CertPathValidatorException.Reason
 
 class MainActivity : AppCompatActivity(),onListItemClickedListener,OnDateChagedListener {
     private lateinit var addPlaceEditText:EditText
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity(),onListItemClickedListener,OnDateChagedL
         val Swipelistener = OnSwipeListItem(this)
         val TouchHelper = ItemTouchHelper(Swipelistener)
         TouchHelper.attachToRecyclerView(PlacelistRecylerView)
+
 
         addnewPlaceButton.setOnClickListener {
             addnewPlace()
@@ -84,11 +86,12 @@ class MainActivity : AppCompatActivity(),onListItemClickedListener,OnDateChagedL
         val mapIntent = Intent(Intent.ACTION_VIEW, placeLocationUri)
         startActivity(mapIntent)
     }
+    // heres where we move the items with map Intent and a toast to add the Toast
 
     override fun onListItemMoved(from: Int, to: Int) {
         placesViewModel.MovePlace(from, to)
         placeRescylerAdapoter.notifyItemMoved(from, to)
-
+// The list being moved
     }
 
     override fun onListItemDeleted(position: Int) {
@@ -101,7 +104,7 @@ class MainActivity : AppCompatActivity(),onListItemClickedListener,OnDateChagedL
             .setAction(getString(R.string.undo)){
                 placesViewModel.addNewPlaces(deletedPlace,position)
                 placeRescylerAdapoter.notifyItemInserted(position)
-
+// Here is the deleteion process of the item in question
             }
             .show()
 
