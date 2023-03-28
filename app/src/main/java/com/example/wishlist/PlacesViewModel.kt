@@ -10,7 +10,7 @@ class PlacesViewModel:ViewModel() {
         return places //a way to return the list
     }
 
-    fun addNewPlaces(place: Place, position: Int? = null): Int {
+    fun addNewPlaces(place: Place, position: Int? = null): Int {// how we add to the list using the code
         for (placeName in places){
 
 

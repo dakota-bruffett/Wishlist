@@ -18,7 +18,7 @@ class PlaceRescylerAdapoter(private val places: List<Place>,
 
 
 {
-    class ViewHolder (private val view: View):RecyclerView.ViewHolder(view){
+    class ViewHolder (private val view: View):RecyclerView.ViewHolder(view){ //  its the view holder for the wishlist
         fun bind(place: Place){
             val placenameTextView: TextView = view.findViewById(R.id.place_name)
             placenameTextView.text = place.name
@@ -39,7 +39,7 @@ class PlaceRescylerAdapoter(private val places: List<Place>,
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) { // its the bind holder to hold the position and view holder to move the code around
         val place = places[position]
         holder.bind(place)
     }
